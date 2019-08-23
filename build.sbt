@@ -1,5 +1,6 @@
 val ScalatraVersion = "2.7.0-RC1"
 val oktaVersion = "0.4.0"
+lazy val scalikejdbcVersion = "3.3.5"
 
 organization := "org.scalatra"
 
@@ -25,8 +26,13 @@ libraryDependencies ++= Seq(
   "com.okta.jwt" % "okta-jwt-verifier-impl" % oktaVersion % "runtime",
   "com.typesafe" % "config" % "1.3.2",
   "ch.qos.logback" % "logback-classic" % "1.2.3" % "runtime",
-  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
 
+  "org.scalikejdbc" %% "scalikejdbc-async" % "0.12.+",
+  "com.github.jasync-sql" % "jasync-postgresql" % "1.0.+",
+  "org.scalikejdbc" %% "scalikejdbc-joda-time" % scalikejdbcVersion,
+
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
+  "com.typesafe.akka" %% "akka-actor" % "2.5.3"
 )
 
 enablePlugins(SbtTwirl)

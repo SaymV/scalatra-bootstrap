@@ -16,7 +16,16 @@ class Settings() {
     config.getInt("okta.timeout")
   )
 
+  val dbConfig = PostgresConfig(
+    config.getString("postgres.url"),
+    config.getString("postgres.port"),
+    config.getString("postgres.database"),
+    config.getString("postgres.user"),
+    config.getString("postgres.password"),
+  )
+
 
 }
 
 case class OktaConfig(domain: String, audience: String, timeout: Int)
+case class PostgresConfig(url: String, port: String, database: String, user: String, password: String)

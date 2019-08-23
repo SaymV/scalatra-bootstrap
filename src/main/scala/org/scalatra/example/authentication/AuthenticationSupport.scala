@@ -50,7 +50,6 @@ trait AuthenticationSupport extends ScalatraBase with LazyLogging {
       }
 
       val authToken = authHeader.replaceFirst("^Bearer ", "")
-      logger.info(authToken)
       val jwt = jwtVerifier.decode(authToken)
 
       // Perform extra validation on auth token contents (for example, expiration date > now ?)

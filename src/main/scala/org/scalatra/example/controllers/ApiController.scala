@@ -1,19 +1,11 @@
 package org.scalatra.example.controllers
 
 import org.scalatra.example.authentication.AuthenticationSupport
-import org.json4s.{DefaultFormats, Formats}
-import org.scalatra._
-import org.scalatra.json._
 import org.scalatra.swagger.{Swagger, SwaggerSupport}
 
-class ApiController(implicit val swagger: Swagger) extends ScalatraServlet with AuthenticationSupport
-  with JacksonJsonSupport with SwaggerSupport {
-
-  protected implicit lazy val jsonFormats: Formats = DefaultFormats
-
-  before() {
-    contentType = formats("json")
-  }
+class ApiController(implicit val swagger: Swagger) extends BaseController
+  with AuthenticationSupport
+  with SwaggerSupport {
 
   val getTheTruth =
     (apiOperation[Boolean]("getTheTruth")
@@ -30,4 +22,5 @@ class ApiController(implicit val swagger: Swagger) extends ScalatraServlet with 
   }
 
   override protected def applicationDescription: String = "The Truth Deliverer"
+
 }
